@@ -4,6 +4,7 @@
 #include <poincare/layout_helper.h>
 #include <poincare/expression.h>
 #include "parsing/token.h"
+#include "poincare/expression_node.h"
 #include <poincare/integer.h>
 #include <poincare/expression.h>
 #include <poincare/rational.h>
@@ -27,7 +28,7 @@ int KMatNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloatMo
 }
 
 Expression KMatNode::shallowReduce(ExpressionNode::ReductionContext reductionContext) {
-  return KMat(this).shallowReduce(reductionContext);
+  LOG_REDUCE(KMat(this).shallowReduce(reductionContext));
 }
 
 Expression KMat::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

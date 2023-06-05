@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/factorial.h>
 #include <poincare/code_point_layout.h>
 #include <poincare/constant.h>
@@ -47,7 +48,7 @@ bool FactorialNode::childNeedsSystemParenthesesAtSerialization(const TreeNode * 
 // Simplification
 
 Expression FactorialNode::shallowReduce(ReductionContext reductionContext) {
-  return Factorial(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Factorial(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

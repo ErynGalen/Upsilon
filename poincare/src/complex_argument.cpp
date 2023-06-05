@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/complex_argument.h>
 #include <poincare/complex_cartesian.h>
 #include <poincare/layout_helper.h>
@@ -25,7 +26,7 @@ int ComplexArgumentNode::serialize(char * buffer, int bufferSize, Preferences::P
 }
 
 Expression ComplexArgumentNode::shallowReduce(ReductionContext reductionContext) {
-  return ComplexArgument(this).shallowReduce(reductionContext);
+  LOG_REDUCE(ComplexArgument(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

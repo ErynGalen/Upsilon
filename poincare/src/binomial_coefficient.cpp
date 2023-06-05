@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/binomial_coefficient.h>
 #include <poincare/binomial_coefficient_layout.h>
 #include <poincare/rational.h>
@@ -16,7 +17,7 @@ constexpr Expression::FunctionHelper BinomialCoefficient::s_functionHelper;
 int BinomialCoefficientNode::numberOfChildren() const { return BinomialCoefficient::s_functionHelper.numberOfChildren(); }
 
 Expression BinomialCoefficientNode::shallowReduce(ReductionContext reductionContext) {
-  return BinomialCoefficient(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(BinomialCoefficient(this).shallowReduce(reductionContext.context()));
 }
 
 Layout BinomialCoefficientNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

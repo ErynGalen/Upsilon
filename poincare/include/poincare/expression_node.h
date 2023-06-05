@@ -7,6 +7,44 @@
 #include <poincare/context.h>
 #include <stdint.h>
 
+#ifdef POINCARE_TREE_LOG
+#define NODE_LOG_SIDE_EFFECTS(result,action,name) do {\
+  std::cout << "<Step name=\"" << (name) << "\">"; \
+  ExpressionNode::log(std::cout, true); \
+  (result) = (action); \
+  ExpressionNode::log(std::cout, true); \
+  std::cout << "</Step>" << std::endl; \
+  } while (0)
+#define NODE_LOG_ACTION(action,name) do {\
+  std::cout << "<Step name=\"" << (name) << "\">"; \
+  ExpressionNode::log(std::cout, true); \
+  action; \
+  ExpressionNode::log(std::cout, true); \
+  std::cout << "</Step>" << std::endl; \
+  } while (0)
+#define EXPR_LOG_ACTION(action,name) do {\
+  std::cout << "<Step name=\"" << (name) << "\">"; \
+  node()->log(std::cout, true); \
+  action; \
+  node()->log(std::cout, true); \
+  std::cout << "</Step>" << std::endl; \
+  } while (0)
+
+#define BEGIN_REDUCE do {\
+  std::cout << "<ReduceProcess><OriginalExpression>"; \
+  node()->log(std::cout, true); \
+  std::cout << "</OriginalExpression>"; \
+  } while (0)
+#define END_REDUCE std::cout << "</ReduceProcess>" << std::endl
+#else
+#define NODE_LOG_SIDE_EFFECTS(result,action,name) (result) = (action)  
+#define NODE_LOG_ACTION(action,name) action
+#define EXPR_LOG_ACTION(action,name) action
+#define BEGIN_REDUCE
+#define END_REDUCE
+#endif
+#define LOG_REDUCE(action) do {Expression result; NODE_LOG_SIDE_EFFECTS(result, action,"shallowReduce"); return result;} while (0)
+
 namespace Poincare {
 
 /* Methods preceded by '*!*' interfere with the expression pool, which can make

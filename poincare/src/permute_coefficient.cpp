@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/permute_coefficient.h>
 #include <poincare/undefined.h>
 #include <poincare/rational.h>
@@ -24,7 +25,7 @@ int PermuteCoefficientNode::serialize(char * buffer, int bufferSize, Preferences
 }
 
 Expression PermuteCoefficientNode::shallowReduce(ReductionContext reductionContext) {
-  return PermuteCoefficient(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(PermuteCoefficient(this).shallowReduce(reductionContext.context()));
 }
 
 template<typename T>

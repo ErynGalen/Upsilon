@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/division.h>
 #include <poincare/fraction_layout.h>
 #include <poincare/multiplication.h>
@@ -52,7 +53,7 @@ int DivisionNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression DivisionNode::shallowReduce(ReductionContext reductionContext) {
-  return Division(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Division(this).shallowReduce(reductionContext));
 }
 
 template<typename T> Complex<T> DivisionNode::compute(const std::complex<T> c, const std::complex<T> d, Preferences::ComplexFormat complexFormat) {

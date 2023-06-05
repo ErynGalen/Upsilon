@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/binomial_distribution_function.h>
 #include <poincare/binomial_distribution.h>
 #include <assert.h>
@@ -5,7 +6,7 @@
 namespace Poincare {
 
 Expression BinomialDistributionFunctionNode::shallowReduce(ReductionContext reductionContext) {
-  return BinomialDistributionFunction(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(BinomialDistributionFunction(this).shallowReduce(reductionContext.context()));
 }
 
 Expression BinomialDistributionFunction::shallowReduce(Context * context, bool * stopReduction) {

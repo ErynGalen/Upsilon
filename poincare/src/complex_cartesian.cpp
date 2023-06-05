@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/complex_cartesian.h>
 #include <poincare/addition.h>
 #include <poincare/arc_tangent.h>
@@ -29,7 +30,7 @@ ExpressionNode::NullStatus ComplexCartesianNode::nullStatus(Context * context) c
 }
 
 Expression ComplexCartesianNode::shallowReduce(ReductionContext reductionContext) {
-  return ComplexCartesian(this).shallowReduce(reductionContext);
+  LOG_REDUCE(ComplexCartesian(this).shallowReduce(reductionContext));
 }
 
 Expression ComplexCartesianNode::shallowBeautify(ReductionContext * reductionContext) {

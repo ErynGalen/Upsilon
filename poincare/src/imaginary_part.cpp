@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/imaginary_part.h>
 #include <poincare/layout_helper.h>
 #include <poincare/serialization_helper.h>
@@ -21,7 +22,7 @@ int ImaginaryPartNode::serialize(char * buffer, int bufferSize, Preferences::Pri
 }
 
 Expression ImaginaryPartNode::shallowReduce(ReductionContext reductionContext) {
-  return ImaginaryPart(this).shallowReduce(reductionContext);
+  LOG_REDUCE(ImaginaryPart(this).shallowReduce(reductionContext));
 }
 
 Expression ImaginaryPart::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

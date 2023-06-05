@@ -1,3 +1,6 @@
+#include "poincare/expression.h"
+#include "poincare/expression_node.h"
+#include <ostream>
 #include <poincare/addition.h>
 #include <poincare/complex_cartesian.h>
 #include <poincare/derivative.h>
@@ -43,7 +46,7 @@ int AdditionNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 // Simplication
 
 Expression AdditionNode::shallowReduce(ReductionContext reductionContext) {
-  return Addition(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Addition(this).shallowReduce(reductionContext));
 }
 
 Expression AdditionNode::shallowBeautify(ReductionContext * reductionContext) {

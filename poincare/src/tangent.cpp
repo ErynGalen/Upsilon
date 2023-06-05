@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/tangent.h>
 #include <poincare/cosine.h>
 #include <poincare/derivative.h>
@@ -33,7 +34,7 @@ Complex<T> TangentNode::computeOnComplex(const std::complex<T> c, Preferences::C
 }
 
 Expression TangentNode::shallowReduce(ReductionContext reductionContext) {
-  return Tangent(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Tangent(this).shallowReduce(reductionContext));
 }
 
 bool TangentNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {

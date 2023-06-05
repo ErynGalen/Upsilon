@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/rational.h>
 #include <poincare/arithmetic.h>
 #include <poincare/code_point_layout.h>
@@ -138,7 +139,7 @@ int RationalNode::simplificationOrderSameType(const ExpressionNode * e, bool asc
 // Simplification
 
 Expression RationalNode::shallowReduce(ReductionContext reductionContext) {
-  return Rational(this).shallowReduce();
+  LOG_REDUCE(Rational(this).shallowReduce());
 }
 
 Expression RationalNode::shallowBeautify(ReductionContext * reductionContext) {

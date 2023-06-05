@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/division_remainder.h>
 #include <poincare/infinity.h>
 #include <poincare/layout_helper.h>
@@ -21,7 +22,7 @@ int DivisionRemainderNode::serialize(char * buffer, int bufferSize, Preferences:
 }
 
 Expression DivisionRemainderNode::shallowReduce(ReductionContext reductionContext) {
-  return DivisionRemainder(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(DivisionRemainder(this).shallowReduce(reductionContext.context()));
 }
 
 template<typename T>

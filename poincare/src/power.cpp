@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/power.h>
 #include <poincare/addition.h>
 #include <poincare/arithmetic.h>
@@ -238,7 +239,7 @@ int PowerNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloatM
 // Simplify
 
 Expression PowerNode::shallowReduce(ReductionContext reductionContext) {
-  return Power(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Power(this).shallowReduce(reductionContext));
 }
 
 Expression PowerNode::shallowBeautify(ReductionContext * reductionContext) {

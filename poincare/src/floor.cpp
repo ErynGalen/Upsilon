@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/floor.h>
 #include <poincare/decimal.h>
 #include <poincare/floor_layout.h>
@@ -32,7 +33,7 @@ Complex<T> FloorNode::computeOnComplex(const std::complex<T> c, Preferences::Com
 }
 
 Expression FloorNode::shallowReduce(ReductionContext reductionContext) {
-  return Floor(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Floor(this).shallowReduce(reductionContext));
 }
 
 Expression Floor::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

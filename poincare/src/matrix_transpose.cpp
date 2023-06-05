@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix_transpose.h>
 #include <poincare/division.h>
 #include <poincare/layout_helper.h>
@@ -13,7 +14,7 @@ constexpr Expression::FunctionHelper MatrixTranspose::s_functionHelper;
 int MatrixTransposeNode::numberOfChildren() const { return MatrixTranspose::s_functionHelper.numberOfChildren(); }
 
 Expression MatrixTransposeNode::shallowReduce(ReductionContext reductionContext) {
-  return MatrixTranspose(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(MatrixTranspose(this).shallowReduce(reductionContext.context()));
 }
 
 Layout MatrixTransposeNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

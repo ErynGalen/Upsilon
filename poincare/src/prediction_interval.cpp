@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/prediction_interval.h>
 #include <poincare/addition.h>
 #include <poincare/division.h>
@@ -27,7 +28,7 @@ int PredictionIntervalNode::serialize(char * buffer, int bufferSize, Preferences
 
 
 Expression PredictionIntervalNode::shallowReduce(ReductionContext reductionContext) {
-  return PredictionInterval(this).shallowReduce(reductionContext);
+  LOG_REDUCE(PredictionInterval(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

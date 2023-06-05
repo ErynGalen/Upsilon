@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/naperian_logarithm.h>
 #include <poincare/constant.h>
 #include <poincare/logarithm.h>
@@ -19,7 +20,7 @@ int NaperianLogarithmNode::serialize(char * buffer, int bufferSize, Preferences:
 }
 
 Expression NaperianLogarithmNode::shallowReduce(ReductionContext reductionContext) {
-  return NaperianLogarithm(this).shallowReduce(reductionContext);
+  LOG_REDUCE(NaperianLogarithm(this).shallowReduce(reductionContext));
 }
 
 

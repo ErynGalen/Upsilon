@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/sum_and_product.h>
 #include <poincare/decimal.h>
 #include <poincare/undefined.h>
@@ -24,7 +25,7 @@ Layout SumAndProductNode::createLayout(Preferences::PrintFloatMode floatDisplayM
 }
 
 Expression SumAndProductNode::shallowReduce(ReductionContext reductionContext) {
-  return SumAndProduct(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(SumAndProduct(this).shallowReduce(reductionContext.context()));
 }
 
 template<typename T>

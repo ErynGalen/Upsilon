@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/symbol.h>
 #include <poincare/code_point_layout.h>
 #include <poincare/context.h>
@@ -70,7 +71,7 @@ Layout SymbolNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, in
 }
 
 Expression SymbolNode::shallowReduce(ReductionContext reductionContext) {
-  return Symbol(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Symbol(this).shallowReduce(reductionContext));
 }
 
 Expression SymbolNode::deepReplaceReplaceableSymbols(Context * context, bool * didReplace, bool replaceFunctionsOnly, int parameteredAncestorsCount) {

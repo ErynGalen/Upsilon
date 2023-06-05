@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/arc_cosine.h>
 #include <poincare/complex.h>
 #include <poincare/layout_helper.h>
@@ -20,7 +21,7 @@ int ArcCosineNode::serialize(char * buffer, int bufferSize, Preferences::PrintFl
 }
 
 Expression ArcCosineNode::shallowReduce(ReductionContext reductionContext) {
-  return ArcCosine(this).shallowReduce(reductionContext);
+  LOG_REDUCE(ArcCosine(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

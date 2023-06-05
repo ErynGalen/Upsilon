@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/randint.h>
 #include <poincare/complex.h>
 #include <poincare/infinity.h>
@@ -57,7 +58,7 @@ template <typename T> Evaluation<T> RandintNode::templateApproximate(Approximati
 }
 
 Expression RandintNode::shallowReduce(ReductionContext reductionContext) {
-  return Randint(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Randint(this).shallowReduce(reductionContext));
 }
 
 Expression Randint::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

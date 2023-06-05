@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/derivative.h>
 #include <poincare/ieee754.h>
 #include <poincare/layout_helper.h>
@@ -36,7 +37,7 @@ int DerivativeNode::serialize(char * buffer, int bufferSize, Preferences::PrintF
 }
 
 Expression DerivativeNode::shallowReduce(ReductionContext reductionContext) {
-  return Derivative(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Derivative(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

@@ -330,7 +330,7 @@ void Expression::defaultDeepReduceChildren(ExpressionNode::ReductionContext redu
   const int childrenCount = numberOfChildren();
   for (int i = 0; i < childrenCount; i++) {
     assert(childrenCount == numberOfChildren());
-    childAtIndex(i).deepReduce(reductionContext);
+    EXPR_LOG_ACTION(childAtIndex(i).deepReduce(reductionContext), "deepReduceChildN");
   }
 }
 
@@ -834,8 +834,10 @@ Expression Expression::reduceAndRemoveUnit(ExpressionNode::ReductionContext redu
 }
 
 Expression Expression::reduce(ExpressionNode::ReductionContext reductionContext) {
+  BEGIN_REDUCE;
   sSimplificationHasBeenInterrupted = false;
   Expression result = deepReduce(reductionContext);
+  END_REDUCE;
   if (sSimplificationHasBeenInterrupted) {
     return replaceWithUndefinedInPlace();
   }
@@ -843,7 +845,7 @@ Expression Expression::reduce(ExpressionNode::ReductionContext reductionContext)
 }
 
 Expression Expression::deepReduce(ExpressionNode::ReductionContext reductionContext) {
-  deepReduceChildren(reductionContext);
+  EXPR_LOG_ACTION(deepReduceChildren(reductionContext), "deepReduceChildren");
   if (sSimplificationHasBeenInterrupted) {
     return *this;
   }

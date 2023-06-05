@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/opposite.h>
 #include <poincare/addition.h>
 #include <poincare/code_point_layout.h>
@@ -68,7 +69,7 @@ int OppositeNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression OppositeNode::shallowReduce(ReductionContext reductionContext) {
-  return Opposite(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Opposite(this).shallowReduce(reductionContext));
 }
 
 /* Simplification */

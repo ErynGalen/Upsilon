@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/normal_distribution_function.h>
 #include <poincare/normal_distribution.h>
 #include <poincare/square_root.h>
@@ -6,7 +7,7 @@
 namespace Poincare {
 
 Expression NormalDistributionFunctionNode::shallowReduce(ReductionContext reductionContext) {
-  return NormalDistributionFunction(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(NormalDistributionFunction(this).shallowReduce(reductionContext.context()));
 }
 
 Expression NormalDistributionFunction::shallowReduce(Context * context, bool * stopReduction) {

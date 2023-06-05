@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/constant.h>
 #include <poincare/code_point_layout.h>
 #include <poincare/horizontal_layout.h>
@@ -75,7 +76,7 @@ Evaluation<T> ConstantNode::templatedApproximate() const {
 }
 
 Expression ConstantNode::shallowReduce(ReductionContext reductionContext) {
-  return Constant(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Constant(this).shallowReduce(reductionContext));
 }
 
 bool ConstantNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {

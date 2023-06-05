@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/real_part.h>
 #include <poincare/complex_cartesian.h>
 #include <poincare/layout_helper.h>
@@ -21,7 +22,7 @@ int RealPartNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression RealPartNode::shallowReduce(ReductionContext reductionContext) {
-  return RealPart(this).shallowReduce(reductionContext);
+  LOG_REDUCE(RealPart(this).shallowReduce(reductionContext));
 }
 
 Expression RealPart::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

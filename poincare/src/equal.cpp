@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/equal.h>
 #include <poincare/rational.h>
 #include <poincare/addition.h>
@@ -23,7 +24,7 @@ extern "C" {
 namespace Poincare {
 
 Expression EqualNode::shallowReduce(ReductionContext reductionContext) {
-  return Equal(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Equal(this).shallowReduce(reductionContext));
 }
 
 Layout EqualNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

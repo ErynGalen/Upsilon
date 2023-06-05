@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/least_common_multiple.h>
 #include <poincare/arithmetic.h>
 #include <poincare/layout_helper.h>
@@ -16,7 +17,7 @@ int LeastCommonMultipleNode::serialize(char * buffer, int bufferSize, Preference
 }
 
 Expression LeastCommonMultipleNode::shallowReduce(ReductionContext reductionContext) {
-  return LeastCommonMultiple(this).shallowReduce(reductionContext);
+  LOG_REDUCE(LeastCommonMultiple(this).shallowReduce(reductionContext));
 }
 
 Expression LeastCommonMultipleNode::shallowBeautify(ReductionContext * reductionContext) {

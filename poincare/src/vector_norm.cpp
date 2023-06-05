@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/addition.h>
 #include <poincare/layout_helper.h>
 #include <poincare/matrix.h>
@@ -13,7 +14,7 @@ constexpr Expression::FunctionHelper VectorNorm::s_functionHelper;
 int VectorNormNode::numberOfChildren() const { return VectorNorm::s_functionHelper.numberOfChildren(); }
 
 Expression VectorNormNode::shallowReduce(ReductionContext reductionContext) {
-  return VectorNorm(this).shallowReduce(reductionContext);
+  LOG_REDUCE(VectorNorm(this).shallowReduce(reductionContext));
 }
 
 Layout VectorNormNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/great_common_divisor.h>
 #include <poincare/arithmetic.h>
 #include <poincare/layout_helper.h>
@@ -16,7 +17,7 @@ int GreatCommonDivisorNode::serialize(char * buffer, int bufferSize, Preferences
 }
 
 Expression GreatCommonDivisorNode::shallowReduce(ReductionContext reductionContext) {
-  return GreatCommonDivisor(this).shallowReduce(reductionContext);
+  LOG_REDUCE(GreatCommonDivisor(this).shallowReduce(reductionContext));
 }
 
 Expression GreatCommonDivisorNode::shallowBeautify(ReductionContext * reductionContext) {

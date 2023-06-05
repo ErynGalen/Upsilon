@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/sequence.h>
 #include <poincare/integer.h>
 #include <poincare/code_point_layout.h>
@@ -54,7 +55,7 @@ int SequenceNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression SequenceNode::shallowReduce(ReductionContext reductionContext) {
-  return Sequence(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Sequence(this).shallowReduce(reductionContext));
 }
 
 Evaluation<float> SequenceNode::approximate(SinglePrecision p, ApproximationContext approximationContext) const {

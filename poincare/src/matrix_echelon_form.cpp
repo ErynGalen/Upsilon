@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix_echelon_form.h>
 #include <poincare/matrix_complex.h>
 #include <poincare/layout_helper.h>
@@ -9,7 +10,7 @@ namespace Poincare {
 int MatrixEchelonFormNode::numberOfChildren() const { return sNumberOfChildren; }
 
 Expression MatrixEchelonFormNode::shallowReduce(ReductionContext reductionContext) {
-  return MatrixEchelonForm(this).shallowReduce(reductionContext);
+  LOG_REDUCE(MatrixEchelonForm(this).shallowReduce(reductionContext));
 }
 
 Layout MatrixEchelonFormNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

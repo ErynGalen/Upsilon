@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/round.h>
 #include <poincare/layout_helper.h>
 #include <poincare/power.h>
@@ -23,7 +24,7 @@ int RoundNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloatM
 }
 
 Expression RoundNode::shallowReduce(ReductionContext reductionContext) {
-  return Round(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Round(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

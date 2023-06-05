@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/arc_tangent.h>
 #include <poincare/complex.h>
 #include <poincare/layout_helper.h>
@@ -45,7 +46,7 @@ Complex<T> ArcTangentNode::computeOnComplex(const std::complex<T> c, Preferences
 }
 
 Expression ArcTangentNode::shallowReduce(ReductionContext reductionContext) {
-  return ArcTangent(this).shallowReduce(reductionContext);
+  LOG_REDUCE(ArcTangent(this).shallowReduce(reductionContext));
 }
 
 Expression ArcTangent::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

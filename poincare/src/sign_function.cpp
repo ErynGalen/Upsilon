@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/sign_function.h>
 #include <poincare/complex_cartesian.h>
 #include <poincare/layout_helper.h>
@@ -32,7 +33,7 @@ int SignFunctionNode::serialize(char * buffer, int bufferSize, Preferences::Prin
 }
 
 Expression SignFunctionNode::shallowReduce(ReductionContext reductionContext) {
-  return SignFunction(this).shallowReduce(reductionContext);
+  LOG_REDUCE(SignFunction(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

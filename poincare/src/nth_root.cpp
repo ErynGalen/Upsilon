@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/nth_root.h>
 #include <poincare/addition.h>
 #include <poincare/constant.h>
@@ -30,7 +31,7 @@ int NthRootNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloa
 }
 
 Expression NthRootNode::shallowReduce(ReductionContext reductionContext) {
-  return NthRoot(this).shallowReduce(reductionContext);
+  LOG_REDUCE(NthRoot(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

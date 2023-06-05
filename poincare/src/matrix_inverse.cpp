@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix_inverse.h>
 #include <poincare/division.h>
 #include <poincare/layout_helper.h>
@@ -15,7 +16,7 @@ constexpr Expression::FunctionHelper MatrixInverse::s_functionHelper;
 int MatrixInverseNode::numberOfChildren() const { return MatrixInverse::s_functionHelper.numberOfChildren(); }
 
 Expression MatrixInverseNode::shallowReduce(ReductionContext reductionContext) {
-  return MatrixInverse(this).shallowReduce(reductionContext);
+  LOG_REDUCE(MatrixInverse(this).shallowReduce(reductionContext));
 }
 
 Layout MatrixInverseNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/store.h>
 #include <poincare/complex.h>
 #include <poincare/context.h>
@@ -10,7 +11,7 @@
 namespace Poincare {
 
 Expression StoreNode::shallowReduce(ReductionContext reductionContext) {
-  return Store(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Store(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/inv_norm.h>
 #include <poincare/infinity.h>
 #include <poincare/integer.h>
@@ -22,7 +23,7 @@ int InvNormNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloa
 }
 
 Expression InvNormNode::shallowReduce(ReductionContext reductionContext) {
-  return InvNorm(this).shallowReduce(reductionContext);
+  LOG_REDUCE(InvNorm(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

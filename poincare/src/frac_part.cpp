@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/frac_part.h>
 #include <poincare/layout_helper.h>
 #include <poincare/serialization_helper.h>
@@ -20,7 +21,7 @@ int FracPartNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression FracPartNode::shallowReduce(ReductionContext reductionContext) {
-  return FracPart(this).shallowReduce(reductionContext);
+  LOG_REDUCE(FracPart(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

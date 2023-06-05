@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/division_quotient.h>
 #include <poincare/infinity.h>
 #include <poincare/layout_helper.h>
@@ -22,7 +23,7 @@ ExpressionNode::Sign DivisionQuotientNode::sign(Context * context) const {
 }
 
 Expression DivisionQuotientNode::shallowReduce(ReductionContext reductionContext) {
-  return DivisionQuotient(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(DivisionQuotient(this).shallowReduce(reductionContext.context()));
 }
 
 Layout DivisionQuotientNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

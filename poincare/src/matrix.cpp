@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix.h>
 #include <poincare/absolute_value.h>
 #include <poincare/addition.h>
@@ -41,7 +42,7 @@ int MatrixNode::polynomialDegree(Context * context, const char * symbolName) con
 }
 
 Expression MatrixNode::shallowReduce(ReductionContext reductionContext) {
-  return Matrix(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(Matrix(this).shallowReduce(reductionContext.context()));
 }
 
 Layout MatrixNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

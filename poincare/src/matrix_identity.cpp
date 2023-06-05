@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix_identity.h>
 #include <poincare/integer.h>
 #include <poincare/layout_helper.h>
@@ -16,7 +17,7 @@ constexpr Expression::FunctionHelper MatrixIdentity::s_functionHelper;
 int MatrixIdentityNode::numberOfChildren() const { return MatrixIdentity::s_functionHelper.numberOfChildren(); }
 
 Expression MatrixIdentityNode::shallowReduce(ReductionContext reductionContext) {
-  return MatrixIdentity(this).shallowReduce(reductionContext);
+  LOG_REDUCE(MatrixIdentity(this).shallowReduce(reductionContext));
 }
 
 Layout MatrixIdentityNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

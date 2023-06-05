@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/decimal.h>
 #include <poincare/rational.h>
 #include <poincare/opposite.h>
@@ -112,7 +113,7 @@ int DecimalNode::simplificationOrderSameType(const ExpressionNode * e, bool asce
 }
 
 Expression DecimalNode::shallowReduce(ReductionContext reductionContext) {
-  return Decimal(this).shallowReduce();
+  LOG_REDUCE(Decimal(this).shallowReduce());
 }
 
 Expression DecimalNode::shallowBeautify(ReductionContext * reductionContext) {

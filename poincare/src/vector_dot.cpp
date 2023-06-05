@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/vector_dot.h>
 #include <poincare/addition.h>
 #include <poincare/layout_helper.h>
@@ -12,7 +13,7 @@ constexpr Expression::FunctionHelper VectorDot::s_functionHelper;
 int VectorDotNode::numberOfChildren() const { return VectorDot::s_functionHelper.numberOfChildren(); }
 
 Expression VectorDotNode::shallowReduce(ReductionContext reductionContext) {
-  return VectorDot(this).shallowReduce(reductionContext);
+  LOG_REDUCE(VectorDot(this).shallowReduce(reductionContext));
 }
 
 Layout VectorDotNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

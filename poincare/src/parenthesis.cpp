@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/parenthesis.h>
 #include <poincare/layout_helper.h>
 #include <poincare/serialization_helper.h>
@@ -17,7 +18,7 @@ int ParenthesisNode::serialize(char * buffer, int bufferSize, Preferences::Print
 }
 
 Expression ParenthesisNode::shallowReduce(ReductionContext reductionContext) {
-  return Parenthesis(this).shallowReduce();
+  LOG_REDUCE(Parenthesis(this).shallowReduce());
 }
 
 template<typename T>

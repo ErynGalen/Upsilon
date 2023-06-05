@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/subtraction.h>
 #include <poincare/layout_helper.h>
 #include <poincare/serialization_helper.h>
@@ -47,7 +48,7 @@ int SubtractionNode::serialize(char * buffer, int bufferSize, Preferences::Print
 }
 
 Expression SubtractionNode::shallowReduce(ReductionContext reductionContext) {
-  return Subtraction(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Subtraction(this).shallowReduce(reductionContext));
 }
 
 Expression Subtraction::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

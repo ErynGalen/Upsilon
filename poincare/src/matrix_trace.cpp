@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix_trace.h>
 #include <poincare/addition.h>
 #include <poincare/layout_helper.h>
@@ -15,7 +16,7 @@ constexpr Expression::FunctionHelper MatrixTrace::s_functionHelper;
 int MatrixTraceNode::numberOfChildren() const { return MatrixTrace::s_functionHelper.numberOfChildren(); }
 
 Expression MatrixTraceNode::shallowReduce(ReductionContext reductionContext) {
-  return MatrixTrace(this).shallowReduce(reductionContext);
+  LOG_REDUCE(MatrixTrace(this).shallowReduce(reductionContext));
 }
 
 Layout MatrixTraceNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

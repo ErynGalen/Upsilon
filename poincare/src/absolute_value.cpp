@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/absolute_value.h>
 #include <poincare/constant.h>
 #include <poincare/layout_helper.h>
@@ -30,7 +31,7 @@ int AbsoluteValueNode::serialize(char * buffer, int bufferSize, Preferences::Pri
 }
 
 Expression AbsoluteValueNode::shallowReduce(ReductionContext reductionContext) {
-  return AbsoluteValue(this).shallowReduce(reductionContext);
+  LOG_REDUCE(AbsoluteValue(this).shallowReduce(reductionContext));
 }
 
 bool AbsoluteValueNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {

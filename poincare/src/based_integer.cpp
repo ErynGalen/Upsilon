@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/based_integer.h>
 #include <poincare/code_point_layout.h>
 #include <poincare/rational.h>
@@ -76,7 +77,7 @@ int BasedIntegerNode::simplificationOrderSameType(const ExpressionNode * e, bool
 }
 
 Expression BasedIntegerNode::shallowReduce(ReductionContext reductionContext) {
-  return BasedInteger(this).shallowReduce();
+  LOG_REDUCE(BasedInteger(this).shallowReduce());
 }
 
 /* BasedInteger  */

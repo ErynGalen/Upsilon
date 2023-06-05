@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/matrix_dimension.h>
 #include <poincare/matrix_complex.h>
 #include <poincare/layout_helper.h>
@@ -14,7 +15,7 @@ constexpr Expression::FunctionHelper MatrixDimension::s_functionHelper;
 int MatrixDimensionNode::numberOfChildren() const { return MatrixDimension::s_functionHelper.numberOfChildren(); }
 
 Expression MatrixDimensionNode::shallowReduce(ReductionContext reductionContext) {
-  return MatrixDimension(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(MatrixDimension(this).shallowReduce(reductionContext.context()));
 }
 
 Layout MatrixDimensionNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

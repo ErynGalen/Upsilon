@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/unit.h>
 #include <poincare/addition.h>
 #include <poincare/float.h>
@@ -701,7 +702,7 @@ int UnitNode::simplificationOrderSameType(const ExpressionNode * e, bool ascendi
 }
 
 Expression UnitNode::shallowReduce(ReductionContext reductionContext) {
-  return Unit(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Unit(this).shallowReduce(reductionContext));
 }
 
 Expression UnitNode::shallowBeautify(ReductionContext * reductionContext) {

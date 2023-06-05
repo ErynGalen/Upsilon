@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/integral.h>
 #include <poincare/complex.h>
 #include <poincare/integral_layout.h>
@@ -40,7 +41,7 @@ int IntegralNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression IntegralNode::shallowReduce(ReductionContext reductionContext) {
-  return Integral(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(Integral(this).shallowReduce(reductionContext.context()));
 }
 
 template<typename T>

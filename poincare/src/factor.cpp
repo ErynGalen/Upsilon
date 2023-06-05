@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/factor.h>
 #include <poincare/undefined.h>
 #include <poincare/arithmetic.h>
@@ -28,7 +29,7 @@ int FactorNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloat
 }
 
 Expression FactorNode::shallowReduce(ReductionContext reductionContext) {
-  return Factor(this).shallowReduce(reductionContext.context());
+  LOG_REDUCE(Factor(this).shallowReduce(reductionContext.context()));
 }
 
 Expression FactorNode::shallowBeautify(ReductionContext * reductionContext) {

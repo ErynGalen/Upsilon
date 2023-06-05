@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/inv_binom.h>
 #include <poincare/infinity.h>
 #include <poincare/integer.h>
@@ -22,7 +23,7 @@ int InvBinomNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression InvBinomNode::shallowReduce(ReductionContext reductionContext) {
-  return InvBinom(this).shallowReduce(reductionContext);
+  LOG_REDUCE(InvBinom(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

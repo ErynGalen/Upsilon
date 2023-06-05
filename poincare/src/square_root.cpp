@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/square_root.h>
 #include <poincare/addition.h>
 #include <poincare/division.h>
@@ -34,7 +35,7 @@ Complex<T> SquareRootNode::computeOnComplex(const std::complex<T> c, Preferences
 }
 
 Expression SquareRootNode::shallowReduce(ReductionContext reductionContext) {
-  return SquareRoot(this).shallowReduce(reductionContext);
+  LOG_REDUCE(SquareRoot(this).shallowReduce(reductionContext));
 }
 
 Expression SquareRoot::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

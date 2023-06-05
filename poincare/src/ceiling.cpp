@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/ceiling.h>
 #include <poincare/constant.h>
 #include <poincare/ceiling_layout.h>
@@ -32,7 +33,7 @@ Complex<T> CeilingNode::computeOnComplex(const std::complex<T> c, Preferences::C
 }
 
 Expression CeilingNode::shallowReduce(ReductionContext reductionContext) {
-  return Ceiling(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Ceiling(this).shallowReduce(reductionContext));
 }
 
 

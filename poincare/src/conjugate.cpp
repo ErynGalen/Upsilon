@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/conjugate.h>
 #include <poincare/conjugate_layout.h>
 #include <poincare/complex_cartesian.h>
@@ -24,7 +25,7 @@ int ConjugateNode::serialize(char * buffer, int bufferSize, Preferences::PrintFl
 }
 
 Expression ConjugateNode::shallowReduce(ReductionContext reductionContext) {
-  return Conjugate(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Conjugate(this).shallowReduce(reductionContext));
 }
 
 template<typename T>

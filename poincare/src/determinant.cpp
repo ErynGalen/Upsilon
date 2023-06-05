@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/determinant.h>
 #include <poincare/addition.h>
 #include <poincare/matrix.h>
@@ -32,7 +33,7 @@ Evaluation<T> DeterminantNode::templatedApproximate(ApproximationContext approxi
 }
 
 Expression DeterminantNode::shallowReduce(ReductionContext reductionContext) {
-  return Determinant(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Determinant(this).shallowReduce(reductionContext));
 }
 
 Expression Determinant::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

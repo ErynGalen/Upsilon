@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/multiplication.h>
 #include <poincare/addition.h>
 #include <poincare/arithmetic.h>
@@ -238,7 +239,7 @@ int MultiplicationNode::serialize(char * buffer, int bufferSize, Preferences::Pr
 }
 
 Expression MultiplicationNode::shallowReduce(ReductionContext reductionContext) {
-  return Multiplication(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Multiplication(this).shallowReduce(reductionContext));
 }
 
 Expression MultiplicationNode::shallowBeautify(ReductionContext * reductionContext) {

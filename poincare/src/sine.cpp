@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/sine.h>
 #include <poincare/complex.h>
 #include <poincare/cosine.h>
@@ -30,7 +31,7 @@ int SineNode::serialize(char * buffer, int bufferSize, Preferences::PrintFloatMo
 }
 
 Expression SineNode::shallowReduce(ReductionContext reductionContext) {
-  return Sine(this).shallowReduce(reductionContext);
+  LOG_REDUCE(Sine(this).shallowReduce(reductionContext));
 }
 
 bool SineNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {

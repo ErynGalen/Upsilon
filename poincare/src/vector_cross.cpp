@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/vector_cross.h>
 #include <poincare/division.h>
 #include <poincare/layout_helper.h>
@@ -12,7 +13,7 @@ constexpr Expression::FunctionHelper VectorCross::s_functionHelper;
 int VectorCrossNode::numberOfChildren() const { return VectorCross::s_functionHelper.numberOfChildren(); }
 
 Expression VectorCrossNode::shallowReduce(ReductionContext reductionContext) {
-  return VectorCross(this).shallowReduce(reductionContext);
+  LOG_REDUCE(VectorCross(this).shallowReduce(reductionContext));
 }
 
 Layout VectorCrossNode::createLayout(Preferences::PrintFloatMode floatDisplayMode, int numberOfSignificantDigits) const {

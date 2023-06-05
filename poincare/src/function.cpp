@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/function.h>
 #include <poincare/layout_helper.h>
 #include <poincare/parenthesis.h>
@@ -57,7 +58,7 @@ int FunctionNode::serialize(char * buffer, int bufferSize, Preferences::PrintFlo
 }
 
 Expression FunctionNode::shallowReduce(ReductionContext reductionContext) {
-  return Function(this).shallowReduce(reductionContext); // This uses Symbol::shallowReduce
+  LOG_REDUCE(Function(this).shallowReduce(reductionContext)); // This uses Symbol::shallowReduce
 }
 
 Expression FunctionNode::deepReplaceReplaceableSymbols(Context * context, bool * didReplace, bool replaceFunctionsOnly, int parameteredAncestorsCount) {
