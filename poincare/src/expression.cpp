@@ -845,7 +845,7 @@ Expression Expression::reduce(ExpressionNode::ReductionContext reductionContext)
 }
 
 Expression Expression::deepReduce(ExpressionNode::ReductionContext reductionContext) {
-  EXPR_LOG_ACTION(deepReduceChildren(reductionContext), "deepReduceChildren");
+  deepReduceChildren(reductionContext);
   if (sSimplificationHasBeenInterrupted) {
     return *this;
   }

@@ -35,7 +35,11 @@
   node()->log(std::cout, true); \
   std::cout << "</OriginalExpression>"; \
   } while (0)
-#define END_REDUCE std::cout << "</ReduceProcess>" << std::endl
+#define END_REDUCE do {\
+  std::cout << "<ResultExpression>"; \
+  node()->log(std::cout, true); \
+  std::cout << "</ResultExpression></ReduceProcess>" << std::endl; \
+  } while (0)
 #else
 #define NODE_LOG_SIDE_EFFECTS(result,action,name) (result) = (action)  
 #define NODE_LOG_ACTION(action,name) action

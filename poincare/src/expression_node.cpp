@@ -100,7 +100,7 @@ int ExpressionNode::simplificationOrderSameType(const ExpressionNode * e, bool a
 }
 
 void ExpressionNode::deepReduceChildren(ExpressionNode::ReductionContext reductionContext) {
-  NODE_LOG_ACTION(Expression(this).defaultDeepReduceChildren(reductionContext), "defaultDeepReduceChildren");
+  Expression(this).defaultDeepReduceChildren(reductionContext);
 }
 
 void ExpressionNode::deepBeautifyChildren(ExpressionNode::ReductionContext reductionContext) {
