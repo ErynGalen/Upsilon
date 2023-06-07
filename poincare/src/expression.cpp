@@ -833,6 +833,21 @@ Expression Expression::reduceAndRemoveUnit(ExpressionNode::ReductionContext redu
   return reduce(reductionContext).removeUnit(Unit);
 }
 
+#ifdef POINCARE_TREE_LOG
+#define BEGIN_REDUCE do {\
+  std::cout << "<ReduceProcess><OriginalExpression>"; \
+  node()->log(std::cout, true); \
+  std::cout << "</OriginalExpression>"; \
+  } while (0)
+#define END_REDUCE do {\
+  std::cout << "<ResultExpression>"; \
+  result.node()->log(std::cout, true); \
+  std::cout << "</ResultExpression></ReduceProcess>" << std::endl; \
+  } while (0)
+#else
+#define BEGIN_REDUCE
+#define END_REDUCE
+#endif
 Expression Expression::reduce(ExpressionNode::ReductionContext reductionContext) {
   BEGIN_REDUCE;
   sSimplificationHasBeenInterrupted = false;

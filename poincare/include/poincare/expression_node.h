@@ -8,11 +8,11 @@
 #include <stdint.h>
 
 #ifdef POINCARE_TREE_LOG
-#define NODE_LOG_SIDE_EFFECTS(result,action,name) do {\
+#define NODE_LOG_ACTION_FOR_RESULT(result_expr_target,action,name) do {\
   std::cout << "<Step name=\"" << (name) << "\">"; \
   ExpressionNode::log(std::cout, true); \
-  (result) = (action); \
-  ExpressionNode::log(std::cout, true); \
+  (result_expr_target) = (action); \
+  result_expr_target.log(); \
   std::cout << "</Step>" << std::endl; \
   } while (0)
 #define NODE_LOG_ACTION(action,name) do {\
@@ -30,24 +30,12 @@
   std::cout << "</Step>" << std::endl; \
   } while (0)
 
-#define BEGIN_REDUCE do {\
-  std::cout << "<ReduceProcess><OriginalExpression>"; \
-  node()->log(std::cout, true); \
-  std::cout << "</OriginalExpression>"; \
-  } while (0)
-#define END_REDUCE do {\
-  std::cout << "<ResultExpression>"; \
-  node()->log(std::cout, true); \
-  std::cout << "</ResultExpression></ReduceProcess>" << std::endl; \
-  } while (0)
 #else
 #define NODE_LOG_SIDE_EFFECTS(result,action,name) (result) = (action)  
 #define NODE_LOG_ACTION(action,name) action
 #define EXPR_LOG_ACTION(action,name) action
-#define BEGIN_REDUCE
-#define END_REDUCE
 #endif
-#define LOG_REDUCE(action) do {Expression result; NODE_LOG_SIDE_EFFECTS(result, action,"shallowReduce"); return result;} while (0)
+#define LOG_REDUCE(action) do {Expression result; NODE_LOG_ACTION_FOR_RESULT(result, action,"shallowReduce"); return result;} while (0)
 
 namespace Poincare {
 
