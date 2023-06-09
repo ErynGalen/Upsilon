@@ -835,14 +835,14 @@ Expression Expression::reduceAndRemoveUnit(ExpressionNode::ReductionContext redu
 
 #ifdef POINCARE_TREE_LOG
 #define BEGIN_REDUCE do {\
-  std::cout << "<ReduceProcess><OriginalExpression>"; \
+  std::cout << "<Step name=\"reduce\"><State name=\"before\">"; \
   node()->log(std::cout, true); \
-  std::cout << "</OriginalExpression>"; \
+  std::cout << "</State>"; \
   } while (0)
 #define END_REDUCE do {\
-  std::cout << "<ResultExpression>"; \
+  std::cout << "<State name=\"after\">"; \
   result.node()->log(std::cout, true); \
-  std::cout << "</ResultExpression></ReduceProcess>" << std::endl; \
+  std::cout << "</State></Step>" << std::endl; \
   } while (0)
 #else
 #define BEGIN_REDUCE

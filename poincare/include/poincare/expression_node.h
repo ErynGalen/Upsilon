@@ -9,25 +9,31 @@
 
 #ifdef POINCARE_TREE_LOG
 #define NODE_LOG_ACTION_FOR_RESULT(result_expr_target,action,name) do {\
-  std::cout << "<Step name=\"" << (name) << "\">"; \
+  std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"; \
   ExpressionNode::log(std::cout, true); \
+  std::cout << "</State>"; \
   (result_expr_target) = (action); \
+  std::cout << "<State name=\"after\">"; \
   result_expr_target.log(); \
-  std::cout << "</Step>" << std::endl; \
+  std::cout << "</State></Step>" << std::endl; \
   } while (0)
 #define NODE_LOG_ACTION(action,name) do {\
-  std::cout << "<Step name=\"" << (name) << "\">"; \
+  std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"; \
   ExpressionNode::log(std::cout, true); \
+  std::cout << "</State>"; \
   action; \
+  std::cout << "<State name=\"after\">"; \
   ExpressionNode::log(std::cout, true); \
-  std::cout << "</Step>" << std::endl; \
+  std::cout << "</State></Step>" << std::endl; \
   } while (0)
 #define EXPR_LOG_ACTION(action,name) do {\
-  std::cout << "<Step name=\"" << (name) << "\">"; \
+  std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"; \
   node()->log(std::cout, true); \
+  std::cout << "</State>"; \
   action; \
+  std::cout << "<State name=\"after\">"; \
   node()->log(std::cout, true); \
-  std::cout << "</Step>" << std::endl; \
+  std::cout << "</State></Step>" << std::endl; \
   } while (0)
 
 #else
