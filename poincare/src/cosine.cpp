@@ -36,7 +36,7 @@ Expression CosineNode::shallowReduce(ReductionContext reductionContext) {
 }
 
 bool CosineNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return Cosine(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(Cosine(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 Expression CosineNode::unaryFunctionDifferential(ReductionContext reductionContext) {

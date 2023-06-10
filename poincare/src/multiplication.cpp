@@ -251,7 +251,7 @@ Expression MultiplicationNode::denominator(ReductionContext reductionContext) co
 }
 
 bool MultiplicationNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return Multiplication(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(Multiplication(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 /* Multiplication */

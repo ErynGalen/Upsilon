@@ -270,7 +270,7 @@ Expression PowerNode::denominator(ReductionContext reductionContext) const {
 }
 
 bool PowerNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return Power(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(Power(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 // Evaluation

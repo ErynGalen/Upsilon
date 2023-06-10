@@ -55,7 +55,7 @@ Expression AdditionNode::shallowBeautify(ReductionContext * reductionContext) {
 
 // Derivation
 bool AdditionNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return Addition(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(Addition(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 // Addition

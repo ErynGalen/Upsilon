@@ -8,40 +8,41 @@
 #include <stdint.h>
 
 #ifdef POINCARE_TREE_LOG
-#define NODE_LOG_ACTION_FOR_RESULT(result_expr_target,action,name) do {\
-  std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"; \
-  ExpressionNode::log(std::cout, true); \
-  std::cout << "</State>"; \
-  (result_expr_target) = (action); \
-  std::cout << "<State name=\"after\">"; \
-  result_expr_target.log(); \
-  std::cout << "</State></Step>" << std::endl; \
-  } while (0)
-#define NODE_LOG_ACTION(action,name) do {\
-  std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"; \
-  ExpressionNode::log(std::cout, true); \
-  std::cout << "</State>"; \
-  action; \
-  std::cout << "<State name=\"after\">"; \
-  ExpressionNode::log(std::cout, true); \
-  std::cout << "</State></Step>" << std::endl; \
-  } while (0)
-#define EXPR_LOG_ACTION(action,name) do {\
-  std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"; \
-  node()->log(std::cout, true); \
-  std::cout << "</State>"; \
-  action; \
-  std::cout << "<State name=\"after\">"; \
-  node()->log(std::cout, true); \
-  std::cout << "</State></Step>" << std::endl; \
-  } while (0)
+#define BEGIN_STEP(name) std::cout << "<Step name=\"" << (name) << "\"><State name=\"before\">"
+#define END_STEP std::cout << "</State></Step>" << std::endl
+#define BEGIN_STATE(name) std::cout << "<State name=\"" << (name) << "\">"
+#define BEGIN_AFTER_STATE BEGIN_STATE("after")
+#define END_STATE std::cout << "</State>"
 
+#define LOG_REDUCE(action) do { \
+  BEGIN_STEP("shallowReduce"); \
+  ExpressionNode::log(std::cout); \
+  END_STATE; \
+  Expression result = action; \
+  BEGIN_AFTER_STATE; \
+  result.log(); \
+  END_STEP; \
+  return result; \
+  } while (0)
+#define LOG_DERIVATE(action) do { \
+  BEGIN_STEP("derivate"); \
+  ExpressionNode::log(std::cout); \
+  END_STATE; \
+  bool result = action; \
+  BEGIN_AFTER_STATE; \
+  ExpressionNode::log(std::cout); \
+  END_STEP; \
+  return result; \
+  } while (0)
 #else
-#define NODE_LOG_SIDE_EFFECTS(result,action,name) (result) = (action)  
-#define NODE_LOG_ACTION(action,name) action
-#define EXPR_LOG_ACTION(action,name) action
+#define BEGIN_STEP(name)
+#define END_STEP
+#define BEGIN_STATE(name)
+#define END_STATE
+#define BEGIN_AFTER_STATE
+#define LOG_REDUCE(action)
+#define LOG_DERIVATE(action)
 #endif
-#define LOG_REDUCE(action) do {Expression result; NODE_LOG_ACTION_FOR_RESULT(result, action,"shallowReduce"); return result;} while (0)
 
 namespace Poincare {
 

@@ -35,7 +35,7 @@ Expression AbsoluteValueNode::shallowReduce(ReductionContext reductionContext) {
 }
 
 bool AbsoluteValueNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return AbsoluteValue(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(AbsoluteValue(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 Expression AbsoluteValue::shallowReduce(ExpressionNode::ReductionContext reductionContext) {

@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/hyperbolic_tangent.h>
 #include <poincare/derivative.h>
 #include <poincare/hyperbolic_cosine.h>
@@ -23,7 +24,7 @@ Complex<T> HyperbolicTangentNode::computeOnComplex(const std::complex<T> c, Pref
 }
 
 bool HyperbolicTangentNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return HyperbolicTangent(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(HyperbolicTangent(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 Expression HyperbolicTangentNode::unaryFunctionDifferential(ReductionContext reductionContext) {

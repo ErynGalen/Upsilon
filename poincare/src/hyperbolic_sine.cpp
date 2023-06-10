@@ -1,3 +1,4 @@
+#include "poincare/expression_node.h"
 #include <poincare/hyperbolic_sine.h>
 #include <poincare/derivative.h>
 #include <poincare/hyperbolic_cosine.h>
@@ -22,7 +23,7 @@ Complex<T> HyperbolicSineNode::computeOnComplex(const std::complex<T> c, Prefere
 }
 
 bool HyperbolicSineNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return HyperbolicSine(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(HyperbolicSine(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 Expression HyperbolicSineNode::unaryFunctionDifferential(ReductionContext reductionContext) {

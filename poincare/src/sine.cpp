@@ -35,7 +35,7 @@ Expression SineNode::shallowReduce(ReductionContext reductionContext) {
 }
 
 bool SineNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return Sine(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(Sine(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 Expression SineNode::unaryFunctionDifferential(ReductionContext reductionContext) {

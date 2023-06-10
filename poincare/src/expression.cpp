@@ -330,7 +330,15 @@ void Expression::defaultDeepReduceChildren(ExpressionNode::ReductionContext redu
   const int childrenCount = numberOfChildren();
   for (int i = 0; i < childrenCount; i++) {
     assert(childrenCount == numberOfChildren());
-    EXPR_LOG_ACTION(childAtIndex(i).deepReduce(reductionContext), "deepReduceChildN");
+    BEGIN_STEP("deepReduceChildN");
+    node()->log(std::cout);
+    END_STATE;
+
+    childAtIndex(i).deepReduce(reductionContext);
+    
+    BEGIN_AFTER_STATE;
+    node()->log(std::cout);
+    END_STEP;
   }
 }
 
@@ -833,26 +841,18 @@ Expression Expression::reduceAndRemoveUnit(ExpressionNode::ReductionContext redu
   return reduce(reductionContext).removeUnit(Unit);
 }
 
-#ifdef POINCARE_TREE_LOG
-#define BEGIN_REDUCE do {\
-  std::cout << "<Step name=\"reduce\"><State name=\"before\">"; \
-  node()->log(std::cout, true); \
-  std::cout << "</State>"; \
-  } while (0)
-#define END_REDUCE do {\
-  std::cout << "<State name=\"after\">"; \
-  result.node()->log(std::cout, true); \
-  std::cout << "</State></Step>" << std::endl; \
-  } while (0)
-#else
-#define BEGIN_REDUCE
-#define END_REDUCE
-#endif
 Expression Expression::reduce(ExpressionNode::ReductionContext reductionContext) {
-  BEGIN_REDUCE;
+  BEGIN_STEP("Reduce");
+  node()->log(std::cout, true);
+  END_STATE;
+
   sSimplificationHasBeenInterrupted = false;
   Expression result = deepReduce(reductionContext);
-  END_REDUCE;
+
+  BEGIN_AFTER_STATE;
+  result.node()->log(std::cout, true);
+  END_STEP;
+
   if (sSimplificationHasBeenInterrupted) {
     return replaceWithUndefinedInPlace();
   }

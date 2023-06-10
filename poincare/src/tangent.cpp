@@ -38,7 +38,7 @@ Expression TangentNode::shallowReduce(ReductionContext reductionContext) {
 }
 
 bool TangentNode::derivate(ReductionContext reductionContext, Expression symbol, Expression symbolValue) {
-  return Tangent(this).derivate(reductionContext, symbol, symbolValue);
+  LOG_DERIVATE(Tangent(this).derivate(reductionContext, symbol, symbolValue));
 }
 
 Expression TangentNode::unaryFunctionDifferential(ReductionContext reductionContext) {

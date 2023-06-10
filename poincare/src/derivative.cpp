@@ -176,6 +176,9 @@ Expression Derivative::shallowReduce(ExpressionNode::ReductionContext reductionC
   if (!derivand.derivate(reductionContext, symbol, symbolValue)) {
     return *this;
   }
+  BEGIN_STATE("after Expression::derivate()");
+  childAtIndex(0).log();
+  END_STATE;
   /* Updates the value of derivand, because derivate may call
    * replaceWithInplace on it.
    * We need to reduce the derivand here before replacing the symbol : the
